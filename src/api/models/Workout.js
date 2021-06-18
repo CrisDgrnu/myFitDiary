@@ -1,7 +1,7 @@
-import { DataTypes } from 'sequelize';
-import { define } from '../../config/database/Connection';
+const { DataTypes } = require('sequelize');
+const connection = require('../../config/database/Connection');
 
-const Workout = define("Workouts", {
+const Workout = connection.define("Workouts", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -20,4 +20,4 @@ const Workout = define("Workouts", {
 
 
 
-export default Workout;
+module.exports = Workout;
