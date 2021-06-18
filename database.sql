@@ -1,0 +1,31 @@
+CREATE TABLE Users (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	surname VARCHAR(255) NOT NULL,
+	age INT NOT NULL,
+	weight FLOAT NOT NULL,
+	email varchar(255) NOT NULL,
+	workout int NOT NULL,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Workouts (
+	id INT NOT NULL AUTO_INCREMENT,
+	owner INT NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	exercises INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (owner) REFERENCES Users(id)
+);
+
+CREATE TABLE Exercises (
+	id INT NOT NULL AUTO_INCREMENT,
+	workout INT NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	description VARCHAR(255) NOT NULL,
+	video VARCHAR(255) NOT NULL,
+	level INT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (workout) REFERENCES Workouts(id)
+);
