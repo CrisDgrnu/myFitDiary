@@ -28,6 +28,10 @@ const User = connection.define("Users", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     workouts: {
         type: DataTypes.INTEGER,
         allowNull: true,

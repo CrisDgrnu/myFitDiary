@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+const validator = require('../middlewares/ValidationMiddleware');
+const userSchema = require('../validations/UserValidation')
+
+router.post('/',validator(userSchema) ,(req, res) => {
     res.json({ name: "Hello Im a User" })
 });
 
