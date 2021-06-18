@@ -1,12 +1,12 @@
-const express = require('express');
+import express, { json } from 'express';
 const app = express();
 const PORT = 8080;
 
-const userRoute = require('./api/routes/UserRoute');
-const exerciseRoute = require('./api/routes/ExerciseRoute');
-const workoutRoute = require('./api/routes/WorkoutRoute');
+import userRoute from './api/routes/UserRoute';
+import exerciseRoute from './api/routes/ExerciseRoute';
+import workoutRoute from './api/routes/WorkoutRoute';
 
-app.use(express.json());
+app.use(json());
 
 app.use('/users', userRoute);
 app.use('/exercises', exerciseRoute);

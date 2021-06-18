@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-const connection = new Sequelize('myFitDiary','root','1234',{
+const connection = new Sequelize('myFitDiary', 'root', '1234', {
     dialect: 'mariadb',
     host: 'localhost',
 });
 
-module.exports = connection;
+export default connection;
 
 
 
