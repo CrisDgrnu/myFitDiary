@@ -1,1 +1,1 @@
-const db = require('../../config/database/Entities');
+import db from '../../config/database/Entities';

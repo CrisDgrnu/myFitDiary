@@ -9,4 +9,4 @@ const validator = (schema) => async (req, res, next) => {
     }
 };
 
-module.exports = validator;
+export default validator;

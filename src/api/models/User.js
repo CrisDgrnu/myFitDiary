@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const connection = require('../../config/database/Connection');
+import { DataTypes } from 'sequelize';
+import { define } from '../../config/database/Connection';
 
-const User = connection.define("Users", {
+const User = define("Users", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -40,4 +40,4 @@ const User = connection.define("Users", {
 });
 
 
-module.exports = User;
+export default User;

@@ -1,10 +1,10 @@
-const db = require('../../config/database/Entities');
+import { User } from '../../config/database/Entities';
 
-exports.createUser = async (req, res) => {
+export async function createUser(req, res) {
     const body = req.body;
     try {
-        res.json(await db.User.create(body));
+        res.json(await User.create(body));
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error);
     }
-};
+}
