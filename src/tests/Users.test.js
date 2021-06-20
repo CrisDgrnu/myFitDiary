@@ -7,7 +7,7 @@ describe('POST /users', () => {
 
     describe("Given all the data", () => {
 
-        test('Should respond with 200', async () => {
+        test('Should respond with 201', async () => {
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",
@@ -16,7 +16,7 @@ describe('POST /users', () => {
                 "email": "cristian@gmail.com",
                 "password": "12345678"
             });
-            expect(response.statusCode).toBe(200);
+            expect(response.statusCode).toBe(201);
             expect(response.headers['content-type']).toEqual(expect.stringContaining("json"))
         });
 
