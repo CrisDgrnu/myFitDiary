@@ -4,8 +4,6 @@ const router = express.Router();
 const validator = require('../middlewares/ValidationMiddleware');
 const userSchema = require('../validations/UserValidation');
 
-const userController = require('../controllers/UserController');
-
 /**
  * @swagger
  * definitions:
@@ -38,6 +36,9 @@ const userController = require('../controllers/UserController');
  *     example: 'super1secret2pass'
  */
 
+const userController = require('../controllers/UserController');
+
+
 
 /**
  * @swagger
@@ -57,9 +58,7 @@ const userController = require('../controllers/UserController');
  *       400: 
  *          description: Wrong parameters on request
  *       409:
- *          description: User with this email already exists
- *     
- * 
+ *          description: User with this email already exists 
  */
 router.post('/', validator(userSchema), userController.createUser);
 

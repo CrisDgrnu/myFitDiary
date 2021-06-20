@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8080;
+
 
 // Json parser
 app.use(express.json());
@@ -18,11 +18,7 @@ app.use('/users', userRoute);
 app.use('/exercises', exerciseRoute);
 app.use('/workouts', workoutRoute);
 
-
-
-app.listen(PORT, () => {
-    console.log('Server running on port 8080');
-});
+module.exports = app;
 
 
 

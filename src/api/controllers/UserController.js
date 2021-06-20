@@ -5,7 +5,7 @@ exports.createUser = async (req, res) => {
     try {
         res.json(await db.User.create(body));
     } catch (error) {
-        const email = error.fields.email;
-        res.status(409).json({error: 'This email already exists', email});
+        const email = req.body.email;
+        res.status(409).json({ error: 'This email already exists', email });
     }
 };

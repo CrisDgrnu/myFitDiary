@@ -2,9 +2,9 @@
   "name": "api-rest-example",
   "version": "1.0.0",
   "description": "",
-  "main": "src/App.js",
+  "main": "src/Server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx jest",
     "start": "nodemon index.js"
   },
   "author": "",
@@ -15,6 +15,12 @@
     "nodemon": "^2.0.7",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6",
     "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4",
+    "supertest": "^6.1.3"
   }
 }

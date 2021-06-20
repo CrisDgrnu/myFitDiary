@@ -5,7 +5,7 @@ const validator = (schema) => async (req, res, next) => {
         await schema.validate(body);
         return next();
     } catch (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({error: error.name, causes: error.errors});
     }
 };
 
