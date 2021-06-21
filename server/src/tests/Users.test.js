@@ -1,13 +1,12 @@
 const supertest = require('supertest');
-const app = require('../App');
-
-const api = supertest(app);
+const api = supertest('http://localhost:8080');
 
 describe('POST /users', () => {
 
     describe("Given all the data", () => {
 
-        test('Should respond with 201', async () => {
+        it('Should respond with 201', async () => {
+
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",
@@ -17,10 +16,10 @@ describe('POST /users', () => {
                 "password": "12345678"
             });
             expect(response.statusCode).toBe(201);
-            expect(response.headers['content-type']).toEqual(expect.stringContaining("json"))
+            expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
         });
 
-        test('Should respond with 400 because password is smaller than 8 characters', async () => {
+        it('Should respond with 400 because password is smaller than 8 characters', async () => {
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",
@@ -30,12 +29,11 @@ describe('POST /users', () => {
                 "password": "1234567"
             });
             expect(response.statusCode).toBe(400);
-            expect(response.headers['content-type']).toEqual(expect.stringContaining("json"))
-            expect(response.body.error).toBeDefined()
-            expect(response.body.causes).toBeDefined()
+            expect(response.body.error).toBeDefined();
+            expect(response.body.causes).toBeDefined();
         });
 
-        test('Should respond with 409 because this email already exists', async () => {
+        it('Should respond with 409 because this email already exists', async () => {
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",
@@ -45,12 +43,10 @@ describe('POST /users', () => {
                 "password": "12345678"
             });
             expect(response.statusCode).toBe(409);
-            expect(response.headers['content-type']).toEqual(expect.stringContaining("json"))
-            expect(response.body.error).toBeDefined()
-            expect(response.body.email).toBeDefined()
+            expect(response.body.error).toBeDefined();
+            expect(response.body.email).toBeDefined();
 
         });
-
 
     });
 

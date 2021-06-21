@@ -7,6 +7,4 @@ const Exercise = require('../../api/models/Exercise');
 User.hasMany(Workout);
 Workout.hasMany(Exercise);
 
-connection.sync({ force: true })
-
 module.exports = { User, Workout, Exercise }

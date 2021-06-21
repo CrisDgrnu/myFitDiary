@@ -14,7 +14,7 @@ const Workout = connection.define("Workouts", {
     },
     exercises: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     }
 });
 

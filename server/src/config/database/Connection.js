@@ -6,6 +6,8 @@ const connection = new Sequelize('myFitDiary','root','1234',{
     logging: false
 });
 
+connection.sync({ force: true })
+
 module.exports = connection;
 
 
