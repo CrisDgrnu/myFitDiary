@@ -1,54 +1,47 @@
-const supertest = require('supertest');
-const api = supertest('http://localhost:8080');
+// const supertest = require('supertest');
+// const { app, server } = require('../App');
 
-describe('POST /users', () => {
 
-    describe("Given all the data", () => {
+// const connection = require('../config/database/Connection');
 
-        test('Should respond with 201 (User created)', async () => {
 
-            const response = await api.post('/users').send({
-                "name": "Cristian",
-                "surname": "De Gracia Nuero",
-                "age": 16,
-                "weight": 68.5,
-                "email": "cristian@gmail.com",
-                "password": "12345678"
-            });
-            expect(response.statusCode).toBe(201);
-            expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
-        });
+// const api = supertest(app);
 
-        test('Should respond with 400 (Password is smaller than 8 characters)', async () => {
-            const response = await api.post('/users').send({
-                "name": "Cristian",
-                "surname": "De Gracia Nuero",
-                "age": 16,
-                "weight": 68.5,
-                "email": "cristian@gmail.com",
-                "password": "1234567"
-            });
-            expect(response.statusCode).toBe(400);
-            expect(response.body.error).toBeDefined();
-            expect(response.body.causes).toBeDefined();
-        });
+// const initialUsers = [
+//     {
+//         "name": "Cristian",
+//         "surname": "De Gracia Nuero",
+//         "age": 16,
+//         "weight": 68.5,
+//         "email": "cristian@gmail.com",
+//         "password": "12345678"
+//     }
+// ];
 
-        test('Should respond with 409 (This email already exists)', async () => {
-            const response = await api.post('/users').send({
-                "name": "Cristian",
-                "surname": "De Gracia Nuero",
-                "age": 16,
-                "weight": 68.5,
-                "email": "cristian@gmail.com",
-                "password": "12345678"
-            });
-            expect(response.statusCode).toBe(409);
-            expect(response.body.error).toBeDefined();
-            expect(response.body.email).toBeDefined();
+// beforeAll(async () => {
+//     await connection.sync({ force: true })
+// });
 
-        });
 
-    });
+// test('Should respond with 201 (User created)', async () => {
+//     const response = await api.post('/users').send({
+//         "name": "Cristian",
+//         "surname": "De Gracia Nuero",
+//         "age": 16,
+//         "weight": 68.5,
+//         "email": "cristdian@gmail.com",
+//         "password": "12345678"
+//     });
+//     expect(response.statusCode).toBe(201);
+//     expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
+// });
 
-});
+
+
+// afterAll(async () => {
+//     await connection.close();
+//     server.close();
+// });
+
+
 
