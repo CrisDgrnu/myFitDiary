@@ -11,6 +11,7 @@ const Exercise = connection.define("Exercises", {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     description: {
         type: DataTypes.STRING,

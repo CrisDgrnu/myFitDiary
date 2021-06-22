@@ -5,7 +5,7 @@ describe('POST /users', () => {
 
     describe("Given all the data", () => {
 
-        it('Should respond with 201', async () => {
+        test('Should respond with 201 (User created)', async () => {
 
             const response = await api.post('/users').send({
                 "name": "Cristian",
@@ -19,7 +19,7 @@ describe('POST /users', () => {
             expect(response.headers['content-type']).toEqual(expect.stringContaining("json"));
         });
 
-        it('Should respond with 400 because password is smaller than 8 characters', async () => {
+        test('Should respond with 400 (Password is smaller than 8 characters)', async () => {
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",
@@ -33,7 +33,7 @@ describe('POST /users', () => {
             expect(response.body.causes).toBeDefined();
         });
 
-        it('Should respond with 409 because this email already exists', async () => {
+        test('Should respond with 409 (This email already exists)', async () => {
             const response = await api.post('/users').send({
                 "name": "Cristian",
                 "surname": "De Gracia Nuero",

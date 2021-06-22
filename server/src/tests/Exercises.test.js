@@ -5,9 +5,9 @@ describe('POST /exercises', () => {
 
     describe('Given all the data', () => {
 
-        test('Should respond with 201', async () => {
+        test('Should respond with 201 (Exercise created)', async () => {
             const response = await api.post('/exercises').send({
-                "name": "Flexin",
+                "name": "Flexion",
                 "description": "Boca abajo en el suelo levantar el cuerpo de forma horizontal con las manos",
                 "video": "http://www.youtube.com/flexion",
                 "level": 3
@@ -38,6 +38,18 @@ describe('POST /exercises', () => {
             expect(response.statusCode).toBe(400);
             expect(response.body.error).toBeDefined();
             expect(response.body.causes).toBeDefined();
+        });
+
+        test('Should respond with 409 (Exercise already exists)', async () => {
+            const response = await api.post('/exercises').send({
+                "name": "Flexion",
+                "description": "Boca abajo en el suelo levantar el cuerpo de forma horizontal con las manos",
+                "video": "http://www.youtube.com/flexion",
+                "level": 3
+            });
+            expect(response.statusCode).toBe(409);
+            expect(response.body.error).toBeDefined();
+            expect(response.body.name).toBeDefined();
         });
 
     });

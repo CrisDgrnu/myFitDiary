@@ -10,7 +10,7 @@ exports.createUser = async (req, res) => {
         const user = await db.User.create(body);
         res.status(201).json({ message: 'User created correctly', userId: user.id });
     } catch (error) {
-        const email = req.body.email;
+        const email = body.email;
         res.status(409).json({ error: 'This email already exists', email });
     }
 };

@@ -8,7 +8,7 @@ const swaggerOptions = {
       version: '1.0.0',
     },
   },
-  apis: [`./src/api/routes/UserRoute.js`],
+  apis: ['./src/api/routes/UserRoute.js', './src/api/routes/ExerciseRoute.js'],
 };
 
 module.exports = swaggerDocs = swaggerJsDoc(swaggerOptions);
