@@ -1,12 +1,15 @@
+// App basic setup
 const express = require('express');
 const app = express();
 
+// Database connection
+require('./config/database/Connection');
 
 // Json parser
 app.use(express.json());
 
 // Documentation
-const swagger = require('./config/docs/Swagger');
+require('./config/docs/Swagger');
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // Routes
