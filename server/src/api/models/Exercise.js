@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const connection = require('../../config/database/Connection');
 
-const Exercise = connection.define("Exercises", {
+class Exercise extends Model { }
+Exercise.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -25,6 +26,9 @@ const Exercise = connection.define("Exercises", {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
+}, {
+    sequelize: connection,
+    modelName: 'Exercises'
 });
 
 

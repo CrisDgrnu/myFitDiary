@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const connection = require('../../config/database/Connection');
 
-const User = connection.define("Users", {
+class User extends Model { }
+User.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -37,7 +38,9 @@ const User = connection.define("Users", {
         type: DataTypes.INTEGER,
         allowNull: true,
     }
+}, {
+    sequelize: connection,
+    modelName: 'Users'
 });
-
 
 module.exports = User;

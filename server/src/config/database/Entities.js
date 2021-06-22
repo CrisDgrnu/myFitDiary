@@ -5,6 +5,9 @@ const Workout = require('../../api/models/Workout');
 const Exercise = require('../../api/models/Exercise');
 
 User.hasMany(Workout);
-Workout.hasMany(Exercise);
+Workout.hasMany(Exercise, {
+    foreignKey: 'exercises'
+});
+Exercise.belongsTo(Workout);
 
-module.exports = { User, Workout, Exercise }
+module.exports = { User, Workout, Exercise };

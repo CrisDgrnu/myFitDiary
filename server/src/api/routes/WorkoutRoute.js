@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.json({ name: "Hello Im a Workout" })
-});
+const validator = require('../middlewares/ValidationMiddleware');
+const workoutSchema = require('../validations/WorkoutValidation');
 
+
+const workoutController = require('../controllers/WorkoutController');
+
+
+router.post('/', validator(workoutSchema), workoutController.createWorkout);
 module.exports = router;

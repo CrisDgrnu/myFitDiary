@@ -5,7 +5,7 @@ const db = require('../src/config/database/Connection');
 
 app.listen(PORT, async () => {
     try {
-        await db.authenticate();
+        await db.sync({force : true});
         console.log('Connection to the database has been established successfully.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);

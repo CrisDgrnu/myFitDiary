@@ -5,7 +5,7 @@
   "main": "src/Server.js",
   "scripts": {
     "test": "npx jest",
-    "start": "nodemon index.js"
+    "start": "nodemon Server.js"
   },
   "author": "",
   "license": "ISC",

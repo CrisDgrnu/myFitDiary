@@ -62,6 +62,8 @@ const userController = require('../controllers/UserController');
  */
 router.post('/', validator(userSchema), userController.createUser);
 
+
+
 module.exports = router;
 
 
