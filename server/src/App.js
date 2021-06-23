@@ -1,6 +1,7 @@
 // App basic setup
 const express = require('express');
 const app = express();
+require('dotenv').config();
 
 // Database connection
 require('./config/database/Connection');

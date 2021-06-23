@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb+srv://cfres:rJYbtYzM67EMRtb@cluster0.4vbrj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const connectionString = process.env.MONGODB_CONNECTION;
 
 
 mongoose.connect(connectionString,{
