@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const validator = require('../middlewares/ValidationMiddleware');
-const workoutSchema = require('../validations/WorkoutValidation');
-
 
 const workoutController = require('../controllers/WorkoutController');
 
 
-router.post('/', validator(workoutSchema), workoutController.createWorkout);
+router.post('/', workoutController.createWorkout);
+
+
+router.use(notFoundRoute);
+router.use(errorHandler);
+
 module.exports = router;
