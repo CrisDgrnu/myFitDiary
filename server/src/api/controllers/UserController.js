@@ -3,7 +3,7 @@ const errorCreator = require('../helpers/ErrorCreator');
 const User = require('../models/User');
 
 
-exports.createUser = async (req, res, next) => {
+exports.createUser = (req, res, next) => {
     const body = req.body;
     body.password = encryptPassword(req.body.password);
     body.weights = [{ weight: body.weight, date: Date.now() }];
@@ -16,7 +16,7 @@ exports.createUser = async (req, res, next) => {
     });
 };
 
-exports.addWeight = async (req, res, next) => {
+exports.addWeight = (req, res, next) => {
     const { id } = req.params;
     const body = req.body;
     const newWeight = { weight: body.weight, date: Date.now() };
@@ -30,7 +30,7 @@ exports.addWeight = async (req, res, next) => {
 };
 
 
-exports.findUser = async (req, res, next) => {
+exports.findUser = (req, res, next) => {
     const { id } = req.params;
 
     User.findById(id).then((user) => {
@@ -47,7 +47,7 @@ exports.findUser = async (req, res, next) => {
     });
 };
 
-exports.modifyUser = async (req, res, next) => {
+exports.modifyUser = (req, res, next) => {
     const { id } = req.params;
     const userInfo = req.body;
     userInfo.password = encryptPassword(req.body.password);
@@ -59,7 +59,7 @@ exports.modifyUser = async (req, res, next) => {
     });
 };
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteUser = (req, res, next) => {
     const { id } = req.params;
 
     User.findByIdAndRemove(id).then((user) => {

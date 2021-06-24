@@ -5,7 +5,8 @@ const router = express.Router();
 const workoutController = require('../controllers/WorkoutController');
 
 
-router.post('/', workoutController.createWorkout);
+router.post('/:id', workoutController.createWorkout);
+
 
 
 router.use(notFoundRoute);

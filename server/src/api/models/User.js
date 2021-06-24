@@ -2,13 +2,12 @@ const { Schema, model } = require('mongoose');
 
 const weightSchema = new Schema({
     weight: {
-        type: String,
+        type: Number,
         required: true
     },
     date: Date,
     _id: false
 });
-
 
 const userSchema = new Schema({
     username: String,
@@ -21,6 +20,7 @@ const userSchema = new Schema({
         unique: true
     },
     password: String,
+    workouts: [{ name: String, workout_id: String, _id: false }]
 });
 
 
