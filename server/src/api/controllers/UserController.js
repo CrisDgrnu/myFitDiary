@@ -4,7 +4,9 @@ const User = require('../models/User');
 
 
 exports.createUser = async (req, res, next) => {
-    req.body.password = encryptPassword(req.body.password);
+    const body = req.body;
+    body.password = encryptPassword(req.body.password);
+    body.weights = [{ weight: body.weight, date: Date.now() }];
 
     User.create(req.body).then((user) => {
         res.json(user);
@@ -13,6 +15,20 @@ exports.createUser = async (req, res, next) => {
         next(err);
     });
 };
+
+exports.addWeight = async (req, res, next) => {
+    const { id } = req.params;
+    const body = req.body;
+    const newWeight = { weight: body.weight, date: Date.now() };
+
+    User.findByIdAndUpdate(id, { $push: { weights: newWeight } }, { new: true, runValidators: true }).then((user) => {
+        res.status(201).json(user);
+    }).catch((error) => {
+        const err = errorCreator(error.name, 400, 'No weight suplied');
+        next(err);
+    });
+};
+
 
 exports.findUser = async (req, res, next) => {
     const { id } = req.params;
@@ -33,9 +49,8 @@ exports.findUser = async (req, res, next) => {
 
 exports.modifyUser = async (req, res, next) => {
     const { id } = req.params;
-
-    req.body.password = encryptPassword(req.body.password);
     const userInfo = req.body;
+    userInfo.password = encryptPassword(req.body.password);
 
     User.findByIdAndUpdate(id, userInfo, { new: true }).then((user) => {
         res.status(200).json(user);

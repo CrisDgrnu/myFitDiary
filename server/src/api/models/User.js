@@ -1,17 +1,28 @@
 const { Schema, model } = require('mongoose');
 
+const weightSchema = new Schema({
+    weight: {
+        type: String,
+        required: true
+    },
+    date: Date,
+    _id: false
+});
+
+
 const userSchema = new Schema({
     username: String,
     name: String,
     surname: String,
     age: Number,
-    weight: Number,
+    weights: [{ type: weightSchema }],
     email: {
         type: String,
         unique: true
     },
     password: String,
 });
+
 
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {

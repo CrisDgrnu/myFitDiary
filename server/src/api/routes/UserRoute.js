@@ -6,17 +6,17 @@ const notFoundRoute = require('../middlewares/NotFoundRoute');
 const userController = require('../controllers/UserController');
 
 
+router.post('/', userController.createUser);
 
 router.get('/:id', userController.findUser);
 
-router.post('/', userController.createUser);
-
 router.put('/:id', userController.modifyUser);
+
+router.put('/:id/weight', userController.addWeight);
 
 router.delete('/:id', userController.deleteUser);
 
 router.use(notFoundRoute);
-
 router.use(errorHandler);
 
 
