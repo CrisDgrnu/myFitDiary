@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const connectionString = process.env.MONGODB_CONNECTION;
+
+const { NODE_ENV, MONGODB_CONNECTION, MONGODB_CONNECTION_TEST } = process.env;
+const connectionString = NODE_ENV === 'test' ? MONGODB_CONNECTION_TEST : MONGODB_CONNECTION;
 
 
-mongoose.connect(connectionString,{
+mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

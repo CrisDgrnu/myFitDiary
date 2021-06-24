@@ -10,16 +10,32 @@ const weightSchema = new Schema({
 });
 
 const userSchema = new Schema({
-    username: String,
-    name: String,
-    surname: String,
-    age: Number,
+    username: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    surname: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number,
+        required: true
+    },
     weights: [{ type: weightSchema }],
     email: {
         type: String,
+        required: true,
         unique: true
     },
-    password: String,
+    password: {
+        type: String,
+        required: true
+    },
     workouts: [{ name: String, workout_id: String, _id: false }]
 });
 

@@ -9,7 +9,7 @@ exports.createUser = (req, res, next) => {
     body.weights = [{ weight: body.weight, date: Date.now() }];
 
     User.create(req.body).then((user) => {
-        res.json(user);
+        res.status(201).json(user);
     }).catch((error) => {
         const err = errorCreator(error.name, 409, 'Duplicated email');
         next(err);

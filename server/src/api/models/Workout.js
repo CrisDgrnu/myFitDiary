@@ -1,8 +1,11 @@
 const { Schema, model } = require('mongoose');
 
 const workoutSchema = new Schema({
-    name: String,
-    exercises: [{name: String, exercise_id:String, _id:false}]
+    name: {
+        type: String,
+        required: true
+    },
+    exercises: [{ name: String, exercise_id: String, _id: false }]
 });
 
 workoutSchema.set('toJSON', {
