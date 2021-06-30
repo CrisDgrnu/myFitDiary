@@ -7,6 +7,9 @@ const workoutController = require('../controllers/WorkoutController');
 
 router.post('/:id', workoutController.createWorkout);
 
+router.get('/:id', workoutController.findAllWorkouts);
+
+
 
 
 router.use(notFoundRoute);

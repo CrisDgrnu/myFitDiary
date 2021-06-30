@@ -5,6 +5,10 @@ const workoutSchema = new Schema({
         type: String,
         required: true
     },
+    creator: {
+        type: String,
+        required: true
+    },
     exercises: [{ name: String, exercise_id: String, _id: false }]
 });
 

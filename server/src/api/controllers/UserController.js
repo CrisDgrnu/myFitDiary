@@ -22,9 +22,16 @@ exports.addWeight = (req, res, next) => {
     const newWeight = { weight: body.weight, date: Date.now() };
 
     User.findByIdAndUpdate(id, { $push: { weights: newWeight } }, { new: true, runValidators: true }).then((user) => {
+        if (!user) {
+            err = errorCreator('NotFoundError', 404, 'Id not found'); 
+            next(err);
+        }
         res.status(201).json(user);
     }).catch((error) => {
-        const err = errorCreator(error.name, 400, 'No weight suplied');
+        let err;
+        if (error.name === 'ValidationError') err = errorCreator(error.name, 400, 'No weight suplied');
+        if (error.name === 'CastError') err = errorCreator(error.name, 400, 'Malformed id');
+
         next(err);
     });
 };
