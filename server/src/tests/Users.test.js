@@ -74,7 +74,8 @@ describe('POST', () => {
 describe('GET', () => {
 
     describe('Data is ok', () => {
-        test('Find a user by a given id', async() => {
+
+        test('Find a user by a given id', async () => {
             let userRes = await api.post('/users').send(users[0]);
             const id = userRes.body.id;
             userRes = await api.get(`/users/${id}`);
@@ -83,25 +84,35 @@ describe('GET', () => {
             expect(userRes.body.id).toEqual(id);
             expect(userRes.body.username).toEqual(users[0].username);
             expect(userRes.headers['content-type']).toEqual(expect.stringContaining('json'));
-        })
+        });
     });
 
-    describe('Data is wrong', () => {
-        test('Id has incorrect form', async() => {
-            const userRes = await api.get('/users/asdsadfs');
+    test('Find all users', async () => {
+        users.forEach(async (user) => await api.post('/users').send(user));
+        const userRes = await api.get('/users');
 
-            expect(userRes.statusCode).toEqual(400);
-            expect(userRes.body.message).toEqual('Malformed id');
-        });
-
-        test('Id not found', async() => {
-            const userRes = await api.get('/users/60d4deace2b2670c5a2c68ba');
-
-            expect(userRes.statusCode).toEqual(404);
-            expect(userRes.body.message).toEqual('User with this id wasn\'t found');
-        })
+        expect(userRes.statusCode).toEqual(200);
+        expect(userRes.body.length).toEqual(2);
+        expect(userRes.headers['content-type']).toEqual(expect.stringContaining('json'));
     });
 });
+
+describe('Data is wrong', () => {
+    test('Id has incorrect form', async () => {
+        const userRes = await api.get('/users/asdsadfs');
+
+        expect(userRes.statusCode).toEqual(400);
+        expect(userRes.body.message).toEqual('Malformed id');
+    });
+
+    test('Id not found', async () => {
+        const userRes = await api.get('/users/60d4deace2b2670c5a2c68ba');
+
+        expect(userRes.statusCode).toEqual(404);
+        expect(userRes.body.message).toEqual('User with this id wasn\'t found');
+    });
+});
+
 
 describe('PUT', () => {
 

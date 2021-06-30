@@ -36,6 +36,10 @@ exports.addWeight = (req, res, next) => {
     });
 };
 
+exports.findAllUsers = async (req, res, next) => {
+    User.find()
+        .then((users) =>  res.status(200).json(users));
+};
 
 exports.findUser = (req, res, next) => {
     const { id } = req.params;

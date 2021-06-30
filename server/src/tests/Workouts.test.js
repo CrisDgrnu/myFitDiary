@@ -77,7 +77,6 @@ describe('POST', () => {
 
             expect(workoutRes.statusCode).toEqual(201);
 
-            expect(createdWorkout.name).toEqual('Frontlever');
             expect(createdWorkout.exercises.length).toEqual(2);
             expect(createdWorkout.creator).toEqual(id);
 

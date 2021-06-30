@@ -20,7 +20,6 @@ exports.createWorkout = async (req, res, next) => {
 
 exports.findAllWorkouts = async (req, res, next) => {
     const { id } = req.params;
-    Workout.find({creator: id})
-        .then((workouts) => res.status(200).json(workouts));
-
+    Workout.find({ creator: id })
+        .then((workouts) =>  res.status(200).json(workouts));
 };
