@@ -7,6 +7,8 @@ const exerciseController = require('../controllers/ExerciseController');
 
 router.post('/', exerciseController.createExercise);
 
+router.get('/', exerciseController.findAllExercises);
+
 router.use(notFoundRoute);
 router.use(errorHandler);
 

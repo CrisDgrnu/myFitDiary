@@ -104,7 +104,6 @@ describe('GET', () => {
 
             expect(workoutsRes.statusCode).toEqual(200);
             expect(foundWorkouts.length).toEqual(3);
-            expect(foundWorkouts[1].name).toEqual('Backlever');
         });
 
     });
